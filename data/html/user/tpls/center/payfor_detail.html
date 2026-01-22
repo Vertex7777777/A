@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线考试</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/peskin.css" />
+	<!--[if lt IE 9]>
+	<script src="app/core/styles/js/html5shiv.min.js"></script>
+	<script src="app/core/styles/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="app/core/styles/js/jquery.min.js"></script>
+	<script src="app/core/styles/js/jquery-ui.min.js"></script>
+	<script src="app/core/styles/js/bootstrap.min.js"></script>
+	<script src="app/core/styles/js/bootstrap-datetimepicker.js"></script>
+
+	<script src="app/core/styles/js/all.fine-uploader.min.js"></script>
+
+	<script src="app/core/styles/js/ckeditor/ckeditor.js"></script>
+	<script src="app/core/styles/js/plugin.js"></script>
+</head><body>
+<div class="container-fluid box" style="margin:0px auto;padding-top:10px;overflow:visible">	<div class="row-fluid">		<div class="main">			<div class="col-xs-3">				<h1 style="font-size:42px;color:#337AB7;"><img src="app/core/styles/img/logo2.png" style="height:60px;margin-top:-10px;"/>&nbsp;<b>在线考试</b></h1>			</div>			<div class="col-xs-1">			</div>			<div class="col-xs-6" style="padding-top:22px;">				<div class="form-inline">					<div class="form-group">						<input type="text" style="width:380px;" class="form-control" id="keyword" placeholder="搜索课程/资料">					</div>					<button type="button" class="btn btn-info" onclick="javascript:window.location='index.php?content-app-search&keyword='+$('#keyword').val();">搜资料</button>					<button type="button" class="btn btn-primary" onclick="javascript:window.location='index.php?course-app-search&keyword='+$('#keyword').val();">搜课程</button>				</div>			</div>			<div class="col-xs-2" style="padding-top:22px;">				<ul class="list-unstyled list-inline">										<li>						<div class="btn-group">							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> 李璇璇</button>							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">								<span class="caret"></span>								<span class="sr-only">Toggle Dropdown</span>							</button>							<ul class="dropdown-menu">								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>																								<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>							</ul>						</div>					</li>									</ul>			</div>		</div>	</div></div><div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;padding-top:10px;background-color:#337AB7;">	<div class="row-fluid">		<div class="main">			<div class="col-xs-12">				<ul class="list-unstyled list-inline">					<li class="menu col-xs-1"><a href="index.php" class="icon">首页</a></li>					<li class="menu col-xs-1"><a href="index.php?course">课程</a></li>					<li class="menu col-xs-1"><a href="index.php?exam">考试</a></li>				</ul>			</div>		</div>	</div></div><div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2" style="padding-top:10px;margin-bottom:0px;">
+				<ul class="list-group">	<li class="list-group-item ">				<a href="index.php?user-center">首页</a>			</li>	<li class="list-group-item ">				<a href="index.php?user-center-privatement">隐私管理</a>			</li>	<li class="list-group-item active">		充值积分			</li></ul>			</div>
+			<div class="col-xs-10" id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="index.php">首页</a></li>
+							<li><a href="index.php?user-app">用户中心</a></li>
+							<li><a href="index.php?user-center-payfor">积分充值</a></li>
+							<li class="active">订单详情</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box itembox" style="padding-top:10px;">
+					<h4 class="title">订单详情</h4>
+					<h5>订单号：201705081207715</h5>
+					<table class="table table-bordered">
+						<thead>
+							<td>充值金额</td>
+							<td>可兑换积分</td>
+							<td>下单时间</td>
+						</thead>
+						<tr>
+							<td>10.00</td>
+							<td>100</td>
+							<td>2017-05-08</td>
+						</tr>
+						<tr>
+							<td colspan="3"><p class="text-right">应付款：￥10.00</p></td>
+						</tr>
+					</table>
+					<p class="text-right">
+													<a class="btn btn-success" href="index.php?user-center-payfor-wxpay&ordersn=201705081207715" target="_blank">微信支付</a>
+							<a class="btn btn-primary" href="https://mapi.alipay.com/gateway.do?_input_charset=utf-8&notify_url=http%3A%2F%2Fkaoshi.95kami.site%5C%2Fapi%2Falinotify.php&out_trade_no=201705081207715&partner=2088421657592894&payment_type=1&price=10.00&quantity=1&return_url=http%3A%2F%2Fkaoshi.95kami.site%5C%2Fapi%2Falireturn.php&seller_email=309395410%40qq.com&service=create_direct_pay_by_user&show_url=index.php%3Fitem-app-order%26ordersn%3D201705081207715&subject=%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F%E5%85%85%E5%80%BC+10+%E5%85%83&sign=d35dc8bbf85ed704495a62dff6ed1835&sign_type=MD5" target="_blank">支付宝支付</a>
+											</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
+	<div class="row-fluid">
+		<div class="main itembox">
+			<div class="col-xs-12">
+				<ul class="list-unstyled">
+					<li class="text-center"><a href="">在线考试 </a></li>
+					<li class="text-center"><a href="">Copyright © 2015-2017</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div></body>
+</html>

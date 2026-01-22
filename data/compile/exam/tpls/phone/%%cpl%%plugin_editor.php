@@ -1,0 +1,1 @@
+			<textarea class="jckeditors" id="editor<?php echo $this->tpl_var['dataid']; ?>" name="question[<?php echo $this->tpl_var['dataid']; ?>]" style="width:100%; height:6rem;" rel="<?php echo $this->tpl_var['dataid']; ?>"><?php echo html_entity_decode($this->ev->stripSlashes($this->tpl_var['sessionvars']['examsessionuseranswer'][$this->tpl_var['dataid']])); ?></textarea>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线考试</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/peskin.css" />
+	<!--[if lt IE 9]>
+	<script src="app/core/styles/js/html5shiv.min.js"></script>
+	<script src="app/core/styles/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="app/core/styles/js/jquery.min.js"></script>
+	<script src="app/core/styles/js/jquery.json.js"></script>
+	<script src="app/core/styles/js/jquery-ui.min.js"></script>
+	<script src="app/core/styles/js/bootstrap.min.js"></script>
+	<script src="app/core/styles/js/bootstrap-datetimepicker.js"></script>
+	<script src="app/core/styles/js/all.fine-uploader.min.js"></script>
+	<script src="app/core/styles/js/ckeditor/ckeditor.js"></script>
+	<script src="app/core/styles/js/plugin.js"></script>
+	<script src="app/exam/styles/js/plugin.js"></script>
+</head><body data-spy="scroll" data-target="#myScrollspy">
+<div class="container-fluid" id="questioncontent">
+	<div class="row-fluid">
+		<div class="main box">
+			<div class="col-xs-3" id="questionbar">
+				<dl class="clear" style="width:270px;" data-spy="affix" data-offset-top="235" id="questionindex">
+					<dd>
+						<h2><a class="btn btn-danger col-xs-12" style="font-size:1.2em;"><span id="timer_h">00</span>：<span id="timer_m">00</span>：<span id="timer_s">00</span></a></h2>
+					</dd>
+					<dt class="float_l"><h4>&nbsp;</h4></dt>
+					<ul class="nav nav-tabs" role="tablist">
+																																																<li role="presentation" class="active"><a href="#qt_1" aria-controls="home" role="tab" data-toggle="tab">一</a></li>
+																																																																																																																																																																													</ul>
+					<div class="tab-content" style="margin-top:5px;" id="questionindex">
+																																																<div role="tabpanel" class="tab-pane tableindex active" id="qt_1">
+										                			                			                							<a id="sign_912" href="javascript:;" onclick="javascript:gotoquestion('912')" class="btn btn-default">1</a>
+										                			                							<a id="sign_913" href="javascript:;" onclick="javascript:gotoquestion('913')" class="btn btn-default">2</a>
+										                			                							<a id="sign_914" href="javascript:;" onclick="javascript:gotoquestion('914')" class="btn btn-default">3</a>
+										                			                							<a id="sign_917" href="javascript:;" onclick="javascript:gotoquestion('917')" class="btn btn-default">4</a>
+																				</div>
+																																																																																																																																																																													</div>
+				</dl>
+			</div>
+			<form id="form1" name="form1" method="post" action="index.php?exam-app-exercise-score" class="col-xs-9 split pull-right" style="padding:0px;">
+				<div class="box itembox">
+					<h2 class="text-center">100</h2>
+				</div>
+																																<div class="box itembox questionpanel" id="questype_1">
+					<blockquote class="questype">一、单选题</blockquote>
+				</div>
+				                                                				<div class="box itembox paperexamcontent" id="questions_912" rel="1">
+					<h4 class="title">
+						第1题
+						<span class="pull-right">
+							<a class="btn btn-primary qicon" onclick="javascript:favorquestion('912');"><i class="glyphicon glyphicon-heart-empty"></i></a>
+							<a class="btn btn-info qicon" href="javascript:;" onclick="javascript:signQuestion('912',this);"><i class="glyphicon glyphicon-bookmark"></i></a>
+							<a name="question_912">
+							<input id="time_912" type="hidden" name="time[912]"/>
+						</span>
+					</h4>
+					<div class="choice">
+						</a><p><strong>信号机</strong>处于人工排列进路状态时。信号机编号的颜色为（）</p>
+
+<p>A 红色</p>
+
+<p>B 黄色</p>
+
+<p>C 绿色</p>
+
+<p>D 白色</p>					</div>
+															<div class="selector">
+                    		                        	                        	                        <label class="radio-inline"><input type="radio" name="question[912]" rel="912" value="A" />A </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[912]" rel="912" value="B" />B </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[912]" rel="912" value="C" />C </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[912]" rel="912" value="D" />D </label>
+	                        	                        	                        	                                        </div>
+										<div class="toolbar">
+																		<a class="pull-right btn btn-primary" onclick="javascript:gotoindexquestion(1);">下一题<span class="glyphicon glyphicon-chevron-right"></span></a>
+											</div>
+				</div>
+				                                				<div class="box itembox paperexamcontent" id="questions_913" rel="1">
+					<h4 class="title">
+						第2题
+						<span class="pull-right">
+							<a class="btn btn-primary qicon" onclick="javascript:favorquestion('913');"><i class="glyphicon glyphicon-heart-empty"></i></a>
+							<a class="btn btn-info qicon" href="javascript:;" onclick="javascript:signQuestion('913',this);"><i class="glyphicon glyphicon-bookmark"></i></a>
+							<a name="question_913">
+							<input id="time_913" type="hidden" name="time[913]"/>
+						</span>
+					</h4>
+					<div class="choice">
+						</a><p>信号机处于自动排列进路状态时，信号机编号显示（）</p>
+
+<p>A 黄色</p>
+
+<p>B 红色</p>
+
+<p>C绿色</p>
+
+<p>D 白色</p>					</div>
+															<div class="selector">
+                    		                        	                        	                        <label class="radio-inline"><input type="radio" name="question[913]" rel="913" value="A" />A </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[913]" rel="913" value="B" />B </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[913]" rel="913" value="C" />C </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[913]" rel="913" value="D" />D </label>
+	                        	                        	                        	                                        </div>
+										<div class="toolbar">
+												<a class="btn btn-default" onclick="javascript:gotoindexquestion(0);"><span class="glyphicon glyphicon-chevron-left"></span>上一题</a>
+																		<a class="pull-right btn btn-primary" onclick="javascript:gotoindexquestion(2);">下一题<span class="glyphicon glyphicon-chevron-right"></span></a>
+											</div>
+				</div>
+				                                				<div class="box itembox paperexamcontent" id="questions_914" rel="1">
+					<h4 class="title">
+						第3题
+						<span class="pull-right">
+							<a class="btn btn-primary qicon" onclick="javascript:favorquestion('914');"><i class="glyphicon glyphicon-heart-empty"></i></a>
+							<a class="btn btn-info qicon" href="javascript:;" onclick="javascript:signQuestion('914',this);"><i class="glyphicon glyphicon-bookmark"></i></a>
+							<a name="question_914">
+							<input id="time_914" type="hidden" name="time[914]"/>
+						</span>
+					</h4>
+					<div class="choice">
+						</a><p>信号机处于追踪进路状态时，信号机编号是()</p>
+
+<p>A 红色</p>
+
+<p>B 绿色</p>
+
+<p>C 白色</p>
+
+<p>D 黄色</p>					</div>
+															<div class="selector">
+                    		                        	                        	                        <label class="radio-inline"><input type="radio" name="question[914]" rel="914" value="A" />A </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[914]" rel="914" value="B" />B </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[914]" rel="914" value="C" />C </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[914]" rel="914" value="D" />D </label>
+	                        	                        	                        	                                        </div>
+										<div class="toolbar">
+												<a class="btn btn-default" onclick="javascript:gotoindexquestion(1);"><span class="glyphicon glyphicon-chevron-left"></span>上一题</a>
+																		<a class="pull-right btn btn-primary" onclick="javascript:gotoindexquestion(3);">下一题<span class="glyphicon glyphicon-chevron-right"></span></a>
+											</div>
+				</div>
+				                                				<div class="box itembox paperexamcontent" id="questions_917" rel="1">
+					<h4 class="title">
+						第4题
+						<span class="pull-right">
+							<a class="btn btn-primary qicon" onclick="javascript:favorquestion('917');"><i class="glyphicon glyphicon-heart-empty"></i></a>
+							<a class="btn btn-info qicon" href="javascript:;" onclick="javascript:signQuestion('917',this);"><i class="glyphicon glyphicon-bookmark"></i></a>
+							<a name="question_917">
+							<input id="time_917" type="hidden" name="time[917]"/>
+						</span>
+					</h4>
+					<div class="choice">
+						</a><p>信号机处于人工排列进路，追踪进路，自动排列进路状态时，分别显示()</p>					</div>
+															<div class="choice">
+                    	<p>A&nbsp;绿色 黄色 红色</p>
+
+<p>B 红色 &nbsp;绿色&nbsp;黄色</p>
+
+<p>C 绿色 红色 黄色</p>
+
+<p>D 红色 黄色 绿色</p>                    </div>
+                    					<div class="selector">
+                    		                        	                        	                        <label class="radio-inline"><input type="radio" name="question[917]" rel="917" value="A" />A </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[917]" rel="917" value="B" />B </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[917]" rel="917" value="C" />C </label>
+	                        	                        	                        <label class="radio-inline"><input type="radio" name="question[917]" rel="917" value="D" />D </label>
+	                        	                        	                        	                                        </div>
+										<div class="toolbar">
+												<a class="btn btn-default" onclick="javascript:gotoindexquestion(2);"><span class="glyphicon glyphicon-chevron-left"></span>上一题</a>
+																	</div>
+				</div>
+																																																																																																																												<h3 class="text-center">
+					<input type="hidden" name="insertscore" value="1"/>
+					<a class="btn btn-primary" style="font-size:1em;width:270px;" href="#submodal" role="button" data-toggle="modal">交 卷</a>
+				</h3>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="submodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">交卷</h4>
+			</div>
+			<div class="modal-body">
+				<p>共有试题 <span class="allquestionnumber">50</span> 题，已做 <span class="yesdonumber">0</span> 题。您确认要交卷吗？</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" onclick="javascript:submitPaper();" class="btn btn-primary">确定交卷</button>
+				<button aria-hidden="true" class="btn" type="button" data-dismiss="modal">再检查一下</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var qindex = 0;
+function gotoquestion(questid)
+{
+	$(".questionpanel").hide();
+	$(".paperexamcontent").hide();
+	$("#questions_"+questid).show();
+	$("#questype_"+$("#questions_"+questid).attr('rel')).show();
+}
+function gotoindexquestion(index)
+{
+	$(".questionpanel").hide();
+	$(".paperexamcontent").hide();
+	$(".paperexamcontent").eq(index).show();
+	$("#questype_"+$(".paperexamcontent").eq(index).attr('rel')).show();
+}
+$(document).ready(function(){
+	$.get('index.php?exam-app-index-ajax-lefttime&rand'+Math.random(),function(data){
+		var setting = {
+						time:60,
+						hbox:$("#timer_h"),
+			mbox:$("#timer_m"),
+			sbox:$("#timer_s"),
+			finish:function(){
+				submitPaper();
+			}
+		}
+		setting.lefttime = parseInt(data);
+		countdown(setting);
+	});
+
+	(function(){
+		$(".questionpanel").hide();
+		$(".questionpanel:first").show();
+		$(".paperexamcontent").hide();
+		$(".paperexamcontent:first").show();
+	})();
+
+	setInterval(saveanswer,120000);
+
+	initData = $.parseJSON(storage.getItem('questions'));
+	if(initData){
+		for(var p in initData){
+			if(p!='set')
+			formData[p]=initData[p];
+			$("#time_"+$('[name="'+p+'"]').attr('rel')).val(initData[p].time);
+		}
+
+		var textarea = $('#form1 textarea');
+		$.each(textarea,function(){
+			var _this = $(this);
+			if(initData[_this.attr('name')])
+			{
+				_this.val(initData[_this.attr('name')].value);
+				CKEDITOR.instances[_this.attr('id')].setData(initData[_this.attr('name')].value);
+				if(initData[_this.attr('name')].value && initData[_this.attr('name')].value != '')
+				batmark(_this.attr('rel'),initData[_this.attr('name')].value);
+			}
+		});
+		var texts = $('#form1 :input[type=text]');
+		$.each(texts,function(){
+			var _this = $(this);
+			if(initData[_this.attr('name')])
+			{
+				_this.val(initData[_this.attr('name')]?initData[_this.attr('name')].value:'');
+				if(initData[_this.attr('name')].value && initData[_this.attr('name')].value != '')
+				batmark(_this.attr('rel'),initData[_this.attr('name')].value);
+			}
+		});
+
+		var radios = $('#form1 :input[type=radio]');
+		$.each(radios,function(){
+			var _= this, v = initData[_.name]?initData[_.name].value:null;
+			var _this = $(this);
+			if(v!=''&&v==_.value){
+				_.checked = true;
+				batmark(_this.attr('rel'),initData[_this.attr('name')].value);
+			}else{
+				_.checked=false;
+			}
+		});
+
+		var checkboxs=$('#form1 :input[type=checkbox]');
+		$.each(checkboxs,function(){
+			var _=this,v=initData[_.name]?initData[_.name].value:null;
+			var _this = $(this);
+			if(v!=''&&v==_.value){
+				_.checked=true;
+				batmark(_this.attr('rel'),initData[_this.attr('name')].value);
+			}else{
+				_.checked=false;
+			}
+		});
+	}
+
+	$('#form1 :input[type=text]').change(function(){
+		var _this=$(this);
+		var p=[];
+		p.push(_this.attr('name'));
+		p.push(_this.val());
+		p.push(Date.parse(new Date())/1000);
+		$('#time_'+_this.attr('rel')).val(Date.parse(new Date())/1000);
+		set.apply(formData,p);
+		markQuestion(_this.attr('rel'),true);
+	});
+
+	$('#form1 :input[type=radio]').change(function(){
+		var _=this;
+		var _this=$(this);
+		var p=[];
+		p.push(_.name);
+		if(_.checked){
+			p.push(_.value);
+			p.push(Date.parse(new Date())/1000);
+			$('#time_'+_this.attr('rel')).val(Date.parse(new Date())/1000);
+			set.apply(formData,p);
+		}else{
+			p.push('');
+			p.push(null);
+			set.apply(formData,p);
+		}
+		markQuestion(_this.attr('rel'));
+	});
+
+	$('#form1 textarea').change(function(){
+		var _= this;
+		var _this=$(this);
+		var p=[];
+		p.push(_.name);
+		p.push(_.value);
+		p.push(Date.parse(new Date())/1000);
+		$('#time_'+_this.attr('rel')).val(Date.parse(new Date())/1000);
+		set.apply(formData,p);
+		markQuestion(_this.attr('rel'),true);
+	});
+	$('#form1 :input[type=checkbox]').change(function(){
+		var _= this;
+		var _this = $(this);
+		var p=[];
+		p.push(_.name);
+		if(_.checked){
+			p.push(_.value);
+			p.push(Date.parse(new Date())/1000);
+			$('#time_'+_this.attr('rel')).val(Date.parse(new Date())/1000);
+			set.apply(formData,p);
+		}else{
+			p.push('');
+			p.push(null);
+			set.apply(formData,p);
+		}
+		markQuestion(_this.attr('rel'));
+	});
+	$('.allquestionnumber').html($('.paperexamcontent').length);
+	$('.yesdonumber').html($('#questionindex .btn-primary').length);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线考试系统管理平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/peskin.css" />
+	<!--[if lt IE 9]>
+	<script src="app/core/styles/js/html5shiv.min.js"></script>
+	<script src="app/core/styles/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="app/core/styles/js/jquery.min.js"></script>
+	<script src="app/core/styles/js/jquery-ui.min.js"></script>
+	<script src="app/core/styles/js/bootstrap.min.js"></script>
+	<script src="app/core/styles/js/bootstrap-datetimepicker.js"></script>
+
+	<script src="app/core/styles/js/all.fine-uploader.min.js"></script>
+
+	<script src="app/core/styles/js/ckeditor/ckeditor.js"></script>
+	<script src="app/core/styles/js/plugin.js"></script>
+</head><body>
+<div class="container-fluid box" style="margin:0px auto;padding-top:10px;overflow:visible">	<div class="row-fluid">		<div class="main">			<div class="col-xs-3">				<h1 style="font-size:42px;color:#337AB7;"><img src="app/core/styles/img/logo2.png" style="height:60px;margin-top:-10px;"/>&nbsp;<b>在线考试</b></h1>			</div>			<div class="col-xs-1">			</div>			<div class="col-xs-6" style="padding-top:22px;">				<div class="form-inline">					<div class="form-group">						<input type="text" style="width:380px;" class="form-control" id="keyword" placeholder="搜索课程/资料">					</div>					<button type="button" class="btn btn-info" onclick="javascript:window.location='index.php?content-app-search&keyword='+$('#keyword').val();">搜资料</button>					<button type="button" class="btn btn-primary" onclick="javascript:window.location='index.php?course-app-search&keyword='+$('#keyword').val();">搜课程</button>				</div>			</div>			<div class="col-xs-2" style="padding-top:22px;">				<ul class="list-unstyled list-inline">										<li>						<div class="btn-group">							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> 15014011127</button>							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">								<span class="caret"></span>								<span class="sr-only">Toggle Dropdown</span>							</button>							<ul class="dropdown-menu">								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>								<li><a href="index.php?exam-teach"><em class="glyphicon glyphicon-book"></em> 教师管理</a></li>																<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>							</ul>						</div>					</li>									</ul>			</div>		</div>	</div></div><div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;padding-top:10px;background-color:#337AB7;">	<div class="row-fluid">		<div class="main">			<div class="col-xs-12">				<ul class="list-unstyled list-inline">					<li class="menu col-xs-1"><a href="index.php" class="icon">首页</a></li>					<li class="menu col-xs-1"><a href="index.php?course">课程</a></li>					<li class="menu col-xs-1 active"><a href="index.php?exam">考试</a></li>				</ul>			</div>		</div>	</div></div><div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2" style="padding-top:10px;margin-bottom:0px;">
+				<style>.panel-heading a{color:#FFFFFF;text-decoration:none;}</style><div class="panel-group" id="panel-13465">	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-707348">				<em class="glyphicon glyphglyphicon glyphicon-th-large"></em> 考试设计			</a>		</div>		<div id="panel-element-707348" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="?exam-teach-basic">考场列表</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-2120901">				<em class="glyphicon glyphglyphicon glyphicon-wrench"></em> 课程成绩			</a>		</div>		<div id="panel-element-2120901" class="panel-collapse in collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-users">成绩管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212076">				<em class="glyphicon glyphglyphicon glyphicon-text-color"></em> 试题管理			</a>		</div>		<div id="panel-element-212076" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-questions">普通试题管理</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-rowsquestions">题帽题管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212096">				<em class="glyphicon glyphglyphicon glyphicon-duplicate"></em> 试卷管理			</a>		</div>		<div id="panel-element-212096" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-exams">试卷列表</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-autopage">随机组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-selfpage">手工组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-temppage">即时组卷</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212090">				<em class="glyphicon glyphglyphicon glyphicon-trash"></em> 回收站			</a>		</div>		<div id="panel-element-212090" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-recyle">普通试题</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-recyle-rows">题帽题</a></li>			</ul>		</div>	</div></div>			</div>
+			<div class="col-xs-10" id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="index.php?exam-teach">考试模块</a></li>
+							<li><a href="index.php?exam-teach-users">课程成绩</a></li>
+							<li class="active">教师评卷</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						教师评卷
+					</h4>
+					<form action="index.php?exam-teach-users-makescore" method="post" class="form-horizontal">
+																																																																																										<h4>五、填空题</h4>
+																				<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第1题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>
+
+车站在LOW上的显示中1.()2.()3.()分别表示什么。
+
+
+	
+		
+			&nbsp;
+		
+		
+			&nbsp;
+			&nbsp;
+		
+	
+</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>站名;车站框;选择框</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[888]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第2题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>OCC交出控制、车站未接受（控制权仍在OCC），此时车站名的显示状态（）。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>白色闪烁</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[897]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第3题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>在车站LOW工作站左下角命令栏中选择&ldquo;强行站控&rdquo;，此操作属于()命令操作。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>安全相关</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[902]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第4题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>系统启动后第一个出现的窗口为()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>基本窗口</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[905]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第5题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>主要窗口可以显示整个()及所有过程信息</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>电子联锁站场</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[908]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第6题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>
+
+信号机在LOW上的显示1(),4(),6()分别表示什么</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>信号机编号</p>
+
+<p>信号机灯头</p>
+
+<p>选择框</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[911]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第7题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机编号显示红色时，信号机处于()状态；显示绿色时，信号机处于()状态。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>人工排列进路</p>
+
+<p>自动排列进路</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[915]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第8题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机编号显示绿色时，信号机处于()状态；显示黄色时，信号机处于()状态</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>自动排列进路</p>
+
+<p>追踪进路</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[916]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第9题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机红灯断主丝故障或绿灯/黄灯灭灯时，信号机编号的状态()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[924]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第10题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机正常时，信号机编号的状态()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>稳定</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[925]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第11题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机编号稳定时，信号机是()的</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>正常</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[926]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第12题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机编号闪烁时，信号机()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>信号机红灯断主丝故障或绿灯/黄灯灭灯</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[927]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第13题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>如果信号机红灯为灭灯故障，则()及信号机灯头同时闪烁。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>信号机机柱</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[928]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第14题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>如果信号机红灯为灭灯故障，则信号机机柱及()同时闪烁</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">信号机灯头</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[929]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第15题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>如果信号机红灯为灭灯故障，则信号机机柱及信号机灯头()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">同时闪烁</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[930]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第16题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机基础可以显示出()处于监控层还是非监控层</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>信号</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[933]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第17题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机基础可以显示出信号处于()还是()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">监控层</span></p>
+
+<p><span style="line-height: 20.8px;">非监控层</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[934]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第18题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱用以()的开放及关闭情况。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">记录信号机</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[962]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第19题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱用以记录信号机的()情况。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">开放及关闭</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[963]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第20题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱显示()颜色时，,信号机开放，且开放主信号。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>绿色</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[970]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第21题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机机柱显示绿色时，信号机(),且()主信号</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>开放</p>
+
+<p>开放</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[971]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第22题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱显示()颜色时，信号机开放引导信号。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>黄色</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[972]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第23题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱黄色时，信号机()信号。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">开放引导</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[973]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第24题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机柱红色时，信号机()，且()。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>关闭</p>
+
+<p>未开放过</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[974]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第25题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机机柱显示()颜色时，信号机关闭，且未开放过。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>红色</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[975]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第26题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机机柱显示()颜色时，信号机关闭，但曾经开放过</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>蓝色</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[976]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第27题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机机柱蓝色时 ，信号机()，但()。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>关闭</p>
+
+<p>曾经开放过</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[977]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第28题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>替代信号机标识的主体为红色()</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p><span style="line-height: 20.8px;">横三角形</span></p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[993]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第29题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>替代信号机标识的编号为()，且在被替代的信号机的编号前加一个&ldquo;T&rdquo; 。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>白色</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[994]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第30题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>替代信号机标识的编号为白色，且在被替代的信号机的编号前加一个&ldquo;()&rdquo; 。</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>T</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[995]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+																																													<h4>六、问答题</h4>
+																				<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第1题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>简述正常情况下控制权从控制中心（ATS）下放的操作步骤</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>第一步：在C-LOW点击出联锁相关命令。</p>
+
+<p>第二步：左键单击&ldquo;交出控制&rdquo;并&ldquo;执行&rdquo;，控制权限下放。状态为白色闪光，待车站接收，则变为绿色。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[899]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第2题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>请简单描述下控制权从车站接收及交出的操作步骤</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>第一步：在车站LOW界面上点击出联锁相关命令。</p>
+
+<p>第二步：左键单击&ldquo;交出控制&rdquo;并&ldquo;执行&rdquo;，控制权限上交。状态为绿色闪光，待控制中心接收，则变为白色。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[900]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第3题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>显示器屏幕上由三个窗口组成，分别为(),(),().</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>基本窗口</p>
+
+<p>主窗口</p>
+
+<p>对话窗口</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[903]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第4题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>基本窗口都有哪些内容</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>登记进 入/注销登录按钮； A、B、C类报警按钮；管理员按钮；48小时调</p>
+
+<p>档按钮；消除报警音响按钮；日期和时间显示；版本号显示</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[907]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第5题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>简述LOW上信号机操作步骤</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>第一步：用鼠标的左键点击LOW主窗口（图象放大区）上的信号机元件或信号机元件编号，此时所选元件被打上灰色底色。</p>
+
+<p>第二步：在对话窗口中的命令显示栏（在LOW的左下角）用鼠标的左键点击信号机所需的命令，最后用鼠标的左键点击对话窗口中的&ldquo;执行&rdquo;按钮即可。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[910]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第6题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>当信号机编号显示红色、绿色、黄色时，信号机分别处于什么状态</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>红色：处于人工排列进路状态。</p>
+
+<p>绿色：处于自动排列进路状态。</p>
+
+<p>黄色：处于追踪进路状态。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[921]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第7题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>简单描述自排进路与追踪进路的区别</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>自排进路功能：在ATS系统中实现，可以根据不同目的地码，自动排列不同的相应进路。</p>
+
+<p>追踪进路功能：在联锁系统中实现，只能自动排列唯一的一条进路，进路方向为正常的运营方向。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[932]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第8题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机编号显示什么颜色及其意义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>红色：处于人工排列进路状态。</p>
+
+<p>绿色：处于自动排列进路状态。</p>
+
+<p>黄色：处于追踪进路状态。</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[935]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第9题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机编号会出现的状态及其意义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>稳定：正常</p>
+
+<p>闪烁：信号机红灯断主丝故障或绿灯/黄灯灭灯</p>
+
+<p>如果信号机红灯为灭灯故障，则信号机机柱及信号机灯头同时闪烁</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[936]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第10题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机基础会出现的颜色及其意义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>绿色：主信号控制层（处于监控层。在进路状态）。</p>
+
+<p>黄色：引导信号控制层（处于监控层。在进路状态）。</p>
+
+<p>红色：非监控层（或不在进路状态）</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[938]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第11题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机基础出现的状态及其意义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>稳定：正常</p>
+
+<p>闪烁：在延时中，进路延时取消，进路延时建立或保护区段延时解锁</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[939]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第12题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>信号机机住显示颜色及其意义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>绿色：信号机开放，且开放主信号</p>
+
+<p>黄色：信号机开放引导信号</p>
+
+<p>红色：信号机关闭，且未开放过</p>
+
+<p>蓝色：信号机关闭，但曾经开放过</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[965]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+															<table class="table table-hover table-bordered">
+						<tr class="info">
+							<td style="width:80px;">第13题</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>标题：</td>
+							<td>简述信号机灯头显示的颜色以及所表示的含义</td>
+						</tr>
+						<tr>
+							<td>标准答案：</td>
+							<td><p>绿色：信号机处于开放主信号状态</p>
+
+<p>红色：信号机处于关闭状态</p>
+
+<p>蓝色：信号机处于关闭状态，且被封锁</p></td>
+						</tr>
+						<tr>
+							<td>考生答案：</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="form-inline">【请根据参考答案给出分值】<input size="8" class="form-control" type="text" needle="needle" msg="您必须给出一个分数" name="score[988]" value=""> <span>提示：本题共1分，可输入0.5的倍数。</span></td>
+						</tr>
+					</table>
+																														<div class="form-group">
+			            <div class="text-center">
+			            	<input type="hidden" name="makescore" value="1" />
+			            	<input type="hidden" name="ehid" value="29" />
+			            	<button class="btn btn-primary" type="submit">评分完毕</button>
+			            </div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
+	<div class="row-fluid">
+		<div class="main itembox">
+			<div class="col-xs-12">
+				<ul class="list-unstyled">
+					<li class="text-center"><a href="">在线考试</a></li>
+					<li class="text-center"><a href="">Copyright © 2015-2017</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div></body>
+</html>

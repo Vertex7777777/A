@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线考试系统管理平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="app/core/styles/css/peskin.css" />
+	<!--[if lt IE 9]>
+	<script src="app/core/styles/js/html5shiv.min.js"></script>
+	<script src="app/core/styles/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="app/core/styles/js/jquery.min.js"></script>
+	<script src="app/core/styles/js/jquery-ui.min.js"></script>
+	<script src="app/core/styles/js/bootstrap.min.js"></script>
+	<script src="app/core/styles/js/bootstrap-datetimepicker.js"></script>
+
+	<script src="app/core/styles/js/all.fine-uploader.min.js"></script>
+
+	<script src="app/core/styles/js/ckeditor/ckeditor.js"></script>
+	<script src="app/core/styles/js/plugin.js"></script>
+</head><body>
+<div class="container-fluid box" style="margin:0px auto;padding-top:10px;overflow:visible">	<div class="row-fluid">		<div class="main">			<div class="col-xs-3">				<h1 style="font-size:42px;color:#337AB7;"><img src="app/core/styles/img/logo2.png" style="height:60px;margin-top:-10px;"/>&nbsp;<b>在线考试</b></h1>			</div>			<div class="col-xs-1">			</div>			<div class="col-xs-6" style="padding-top:22px;">				<div class="form-inline">					<div class="form-group">						<input type="text" style="width:380px;" class="form-control" id="keyword" placeholder="搜索课程/资料">					</div>					<button type="button" class="btn btn-info" onclick="javascript:window.location='index.php?content-app-search&keyword='+$('#keyword').val();">搜资料</button>					<button type="button" class="btn btn-primary" onclick="javascript:window.location='index.php?course-app-search&keyword='+$('#keyword').val();">搜课程</button>				</div>			</div>			<div class="col-xs-2" style="padding-top:22px;">				<ul class="list-unstyled list-inline">										<li>						<div class="btn-group">							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> admin</button>							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">								<span class="caret"></span>								<span class="sr-only">Toggle Dropdown</span>							</button>							<ul class="dropdown-menu">								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>								<li><a href="index.php?exam-teach"><em class="glyphicon glyphicon-book"></em> 教师管理</a></li>								<li><a href="index.php?core-master"><em class="glyphicon glyphicon-dashboard"></em> 后台管理</a></li>								<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>							</ul>						</div>					</li>									</ul>			</div>		</div>	</div></div><div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;padding-top:10px;background-color:#337AB7;">	<div class="row-fluid">		<div class="main">			<div class="col-xs-12">				<ul class="list-unstyled list-inline">					<li class="menu col-xs-1"><a href="index.php" class="icon">首页</a></li>					<li class="menu col-xs-1"><a href="index.php?course">课程</a></li>					<li class="menu col-xs-1 active"><a href="index.php?exam">考试</a></li>				</ul>			</div>		</div>	</div></div><div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2" style="padding-top:10px;margin-bottom:0px;">
+				<style>.panel-heading a{color:#FFFFFF;text-decoration:none;}</style><div class="panel-group" id="panel-13465">	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-707348">				<em class="glyphicon glyphglyphicon glyphicon-th-large"></em> 考试设计			</a>		</div>		<div id="panel-element-707348" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="?exam-teach-basic">考场列表</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-2120901">				<em class="glyphicon glyphglyphicon glyphicon-wrench"></em> 课程成绩			</a>		</div>		<div id="panel-element-2120901" class="panel-collapse in collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-users">成绩管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212076">				<em class="glyphicon glyphglyphicon glyphicon-text-color"></em> 试题管理			</a>		</div>		<div id="panel-element-212076" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-questions">普通试题管理</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-rowsquestions">题帽题管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212096">				<em class="glyphicon glyphglyphicon glyphicon-duplicate"></em> 试卷管理			</a>		</div>		<div id="panel-element-212096" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-exams">试卷列表</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-autopage">随机组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-selfpage">手工组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-temppage">即时组卷</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212090">				<em class="glyphicon glyphglyphicon glyphicon-trash"></em> 回收站			</a>		</div>		<div id="panel-element-212090" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-recyle">普通试题</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-recyle-rows">题帽题</a></li>			</ul>		</div>	</div></div>			</div>
+			<div class="col-xs-10" id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="index.php?exam-teach">考试模块</a></li>
+							<li><a href="index.php?exam-teach-users">课程成绩</a></li>
+							<li class="active">成绩分析</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						试题正确率分析
+						<a class="pull-right btn btn-primary" href="index.php?exam-teach-users-stats&basicid=10&type=1">知识点正确率分析</a></a>
+					</h4>
+			        <table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+			                    <th>ID</th>
+			                    <th width="50%">试题名称</th>
+			                    <th>A</th>
+			                    <th>B</th>
+			                    <th>C</th>
+			                    <th>D</th>
+			                    <th>正确次数</th>
+			                    <th>出现次数</th>
+						        <th>正确率</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+		                    					        <tr>
+								<td>
+									1343								</td>
+								<td>
+									<p>在LCP盘上对扣车进行&ldquo;放行&rdquo;操作的步骤及现象：在LCP盘上按压相应的&ldquo;()&rdquo;按钮，在LCP盘上相应的扣车指示灯灭，然后再按压相应的&ldquo;扣车&rdquo;按钮一次（复位），最后再按压相应的&ldquo;取消扣车&rdquo;按钮一次（复位）。同时在LOW上对应的B类报警的第三栏有&ldquo;()&rdquo;的提示信息。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1359								</td>
+								<td>
+									<p><strong>绘制运行图，</strong>选择&ldquo;()&rdquo;按钮，打开&ldquo;添加运行线&rdquo;窗口。如画一条往下行方向的运行线，输入车次号：110101，选择列车类型为()，点击&ldquo;确定&rdquo;按钮。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1403								</td>
+								<td>
+									<p>在当前时间线的右边才能绘制计划线</p>								</td>
+								<td>
+									25%
+								</td>
+								<td>
+									4.17%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									6								</td>
+								<td>
+									24								</td>
+								<td>
+									25%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1406								</td>
+								<td>
+									<p>列车车次号为6位，如车次号&ldquo;510132&rdquo;，&ldquo;51&rdquo;表示目的地码，&ldquo;01&rdquo;表示序列号，&ldquo;32&rdquo;表示<span style="line-height: 20.8px;">服务号</span></p>								</td>
+								<td>
+									8.33%
+								</td>
+								<td>
+									16.67%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									4								</td>
+								<td>
+									24								</td>
+								<td>
+									16.67%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1416								</td>
+								<td>
+									<p>下列说法有误的是()</p>								</td>
+								<td>
+									8.33%
+								</td>
+								<td>
+									20.83%
+								</td>
+								<td>
+									25%
+								</td>
+								<td>
+									8.33%
+								</td>
+								<td>
+									7								</td>
+								<td>
+									24								</td>
+								<td>
+									29.17%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1470								</td>
+								<td>
+									<p>在C-LOW上，要排列一条基本进路，步骤,用鼠标的左键点击LOW主窗口上要排列进路的始端信号机，再用鼠标的右键点击要排列进路的终端信号机，此时所选始端信号机和终端信号机都会被打上灰色底色。</p>								</td>
+								<td>
+									20.83%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									5								</td>
+								<td>
+									24								</td>
+								<td>
+									20.83%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1473								</td>
+								<td>
+									<p>在C-LOW上，要取消一条已排好的进路，在对话窗口中的命令显示栏用鼠标的左键点击&ldquo;取消进路&rdquo;的命令，最后用鼠标的左键点击对话窗口中的&ldquo;执行&rdquo;按钮即可。</p>								</td>
+								<td>
+									20.83%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									5								</td>
+								<td>
+									24								</td>
+								<td>
+									20.83%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1475								</td>
+								<td>
+									<p><span style="font-size: 10pt; font-family: 宋体; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">在</span><span lang="EN-US" style="font-size: 10pt; font-family: Helvetica, sans-serif; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">C-LOW</span><span style="font-size: 10pt; font-family: 宋体; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">上，要排列一条基本进路，</span>在对话窗口中的命令显示栏用鼠标的右键点击&ldquo;排列进路&rdquo;的命令，最后用鼠标的左键点击对话窗口中的&ldquo;执行&rdquo;按钮即可</p>								</td>
+								<td>
+									16.67%
+								</td>
+								<td>
+									4.17%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									1								</td>
+								<td>
+									24								</td>
+								<td>
+									4.17%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1490								</td>
+								<td>
+									<p>信号机故障恢复操作步骤：</p>
+
+<p>&nbsp;第一步：在键盘上按压&ldquo;()&rdquo;键，用鼠标点击信号机。</p>
+
+<p>第二步：在弹出的右键菜单中选择&ldquo;*****()&rdquo;即可。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1492								</td>
+								<td>
+									<p><strong>道岔故障设置</strong>操作步骤</p>
+
+<p>第一步：按住键盘上&ldquo;CTRL&rdquo;键不松手，然后用鼠标右键点击()。</p>
+
+<p>第二步：在弹出的右键菜单中选择()。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1495								</td>
+								<td>
+									<p><strong>轨道区段</strong>故障恢复操作步骤：</p>
+
+<p>第一步：在键盘上按压&ldquo;CTRL&rdquo;键，用鼠标点击()。</p>
+
+<p>第二步：在弹出的()中选择&ldquo;*******恢复&rdquo;即可。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1601								</td>
+								<td>
+									<p><strong>道岔名称</strong>白色表示道岔单独锁闭</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									20.83%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									5								</td>
+								<td>
+									24								</td>
+								<td>
+									20.83%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1602								</td>
+								<td>
+									<p><strong>道岔名称</strong>灰色表示道岔单独锁闭</p>								</td>
+								<td>
+									4.17%
+								</td>
+								<td>
+									16.67%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									4								</td>
+								<td>
+									24								</td>
+								<td>
+									16.67%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1612								</td>
+								<td>
+									<p>道岔单独锁闭的含义是指可通过该道岔锁定位置排进路，但不能操作；道岔封闭是指不能通过该道岔排进路，但道岔可以单独操作</p>								</td>
+								<td>
+									16.67%
+								</td>
+								<td>
+									4.17%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									4								</td>
+								<td>
+									24								</td>
+								<td>
+									16.67%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1613								</td>
+								<td>
+									<p><strong>&nbsp;进路的办理</strong>：</p>
+
+<p>点压始端--终端&mdash;&mdash;开通()进路。</p>
+
+<p>点压始端--变更（或多个变更）--终端&mdash;&mdash;开通()进路</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1615								</td>
+								<td>
+									<p>()操纵步骤：同时点压&ldquo;定操&rdquo;（反操）按钮和&ldquo;道岔&rdquo;按钮，即可将道岔转换至所需位置。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1616								</td>
+								<td>
+									<p>()步骤：同时点压&ldquo;单锁&rdquo;按钮和&ldquo;道岔&rdquo;按钮，显示红色道岔号。点压&ldquo;单解&rdquo;和&ldquo;道岔&rdquo;按钮，道岔解锁。</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1618								</td>
+								<td>
+									<p>道岔单独操纵步骤：点压&ldquo;定操&rdquo;（反操）按钮，即可将道岔转换至所需位置。</p>								</td>
+								<td>
+									20.83%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0								</td>
+								<td>
+									24								</td>
+								<td>
+									0%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1619								</td>
+								<td>
+									<p>单独锁闭道岔步骤：同时点压&ldquo;单锁&rdquo;按钮，显示红色道岔号。点压&ldquo;单解&rdquo;，道岔解锁。</p>								</td>
+								<td>
+									16.67%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0								</td>
+								<td>
+									24								</td>
+								<td>
+									0%
+								</td>
+							</tr>
+					        					        <tr>
+								<td>
+									1621								</td>
+								<td>
+									<p>封锁信号步骤：先按压()，再按压()按钮，这时信号机外套上白色方框，表明信号机按钮已不能再进行操作</p>								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									0%
+								</td>
+								<td>
+									3								</td>
+								<td>
+									24								</td>
+								<td>
+									12.5%
+								</td>
+							</tr>
+					        			        	</tbody>
+			        </table>
+			        <ul class="pagination pull-right">
+			            <li><a href="#" class="current">1</a></li><li><a target="" href="index.php?exam-teach-users-stats&basicid=10&page=2">2</a></li><li><a target="" href="index.php?exam-teach-users-stats&basicid=10&page=3">3</a></li><li><a>共41条数据</a></li>			        </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
+	<div class="row-fluid">
+		<div class="main itembox">
+			<div class="col-xs-12">
+				<ul class="list-unstyled">
+					<li class="text-center"><a href="">在线考试</a></li>
+					<li class="text-center"><a href="">Copyright © 2015-2017</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div></body>
+</html>
