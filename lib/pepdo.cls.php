@@ -56,7 +56,7 @@
     	$this->linkid->rollback();
     }
 
-    public function fetchAll($sql,$index,$unserialize)
+public function fetchAll($sql,$index,$unserialize)
     {
     	if(!is_array($sql))return false;
     	if(!$this->linkid)$this->connect();

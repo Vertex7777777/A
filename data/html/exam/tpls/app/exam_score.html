@@ -22,7 +22,8 @@
 	<script src="app/core/styles/js/ckeditor/ckeditor.js"></script>
 	<script src="app/core/styles/js/plugin.js"></script>
 	<script src="app/exam/styles/js/plugin.js"></script>
-</head><body>
+</head>
+<body>
 <div class="container-fluid box" style="margin:0px auto;padding-top:10px;overflow:visible">
 	<div class="row-fluid">
 		<div class="main">
@@ -72,7 +73,42 @@
 			</div>
 		</div>
 	</div>
-</div><div class="container-fluid">
+</div>
+<style>
+    .ai-box {
+        border: 1px solid #ddd;
+        background: #fdfdfd;
+        border-radius: 4px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        clear: both; /* 确保换行显示 */
+    }
+    .ai-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #337ab7; /* 契合 LNMP 系统蓝 */
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    .ai-content {
+        line-height: 1.8;
+        color: #444;
+        font-size: 14px;
+    }
+    .ai-loading {
+        color: #888;
+        text-align: center;
+        padding: 10px;
+    }
+    /* 简单的闪烁动画 */
+    .typing-dot {
+        animation: blink 1s infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+</style>
+<div class="container-fluid">
 	<div class="row-fluid">
 		<div class="main">
 			<div class="box itembox" style="margin-bottom:0px;">
@@ -80,23 +116,23 @@
 					<ol class="breadcrumb">
 					  <li><a href="index.php">首页</a></li>
 					  <li><a href="index.php?exam-app">考试</a></li>
-					  <li><a href="index.php?exam-app-basics">演示考场</a></li>
+					  <li><a href="index.php?exam-app-basics">【电子科技大学论文答辩模拟场】</a></li>
 					  <li><a href="index.php?exam-app-exam">正式考试</a></li>
 					  <li class="active">成绩单</li>
 					</ol>
 				</div>
 			</div>
 			<div class="box itembox">
-				<legend class="text-center"><h3>演示站试卷</h3></legend>
+				<legend class="text-center"><h3>【安全考试1】</h3></legend>
 								<div class="col-xs-4">
             		<div class="boardscore">
-            			<h1 class="text-center text-danger">2.00 分</h1>
+            			<h1 class="text-center text-danger">0.00 分</h1>
             			<p>分数评价</p>
             		</div>
             	</div>
             	<div class="col-xs-8">
             		<div><b class="text-info">考试详情：</b></div>
-          			<p>总分：<b class="text-warning">100</b>分 合格分数线：<b class="text-warning">60</b>分 答卷耗时：<b class="text-warning">30秒</b></p>
+            			<p>总分：<b class="text-warning">100</b>分 合格分数线：<b class="text-warning">60</b>分 答卷耗时：<b class="text-warning">38秒</b></p>
               		<table class="table table-hover table-bordered">
                       <tr class="success">
                         <th>题型</th>
@@ -107,42 +143,76 @@
                       </tr>
                                                                   <tr>
                         <td>单选题</td>
-                        <td>70</td>
-                        <td>1</td>
-                        <td>70.0</td>
-                        <td>1.0</td>
-                      </tr>
-                                                                                        <tr>
-                        <td>多选题</td>
                         <td>10</td>
                         <td>0</td>
-                        <td>10.0</td>
+                        <td>100.0</td>
                         <td>0.0</td>
                       </tr>
-                                                                                        <tr>
-                        <td>判断题</td>
-                        <td>5</td>
-                        <td>1</td>
-                        <td>5.0</td>
-                        <td>1.0</td>
-                      </tr>
-                                                                                                                                                                                                      <tr>
-                        <td colspan="5" align="left">本次考试共<b class="text-warning">85</b>道题，总分<b class="text-warning">100</b>分，您做对<b class="text-warning">2</b>道题，得到<b class="text-warning">2.00</b>分</td>
+                                                                                                                                                                                                                                                                                              <tr>
+                        <td colspan="5" align="left">本次考试共<b class="text-warning">10</b>道题，总分<b class="text-warning">100</b>分，您做对<b class="text-warning">0</b>道题，得到<b class="text-warning">0.00</b>分</td>
                       </tr>
                    </table>
-                                      <div class="text-center"><a href="index.php?exam-app-history-view&ehid=1" class="btn btn-info">查看答案和解析</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?exam-app-history&ehtype=2" class="btn btn-info">进入我的考试记录</a></div>
+                                      <div class="text-center"><a href="index.php?exam-app-history-view&ehid=8" class="btn btn-info">查看答案和解析</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?exam-app-history&ehtype=2" class="btn btn-info">进入我的考试记录</a></div>
             	               	</div>
-            	            </div>
+
+                <div class="col-xs-12">
+                    <div class="ai-box">
+                        <div class="ai-title">
+                            <span class="glyphicon glyphicon-tasks"></span> 
+                            企业安全考评 · AI 智能诊断
+                        </div>
+                        <div id="ai-result-area" class="ai-content">
+                            <div class="ai-loading">
+                                <span class="glyphicon glyphicon-refresh" style="animation: spin 2s linear infinite;"></span>
+                                正在分析您的安全考核试卷，生成整改建议中<span class="typing-dot">...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            </div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    // 获取当前页面URL中的 ehid 参数
+    // PHPEMS 的模板变量可以直接输出，这里为了保险使用 JS 提取
+    var ehid = "8"; 
+    
+    // 如果模板没解析出来，尝试从 URL 获取
+    if(!ehid) {
+        var urlParams = new URLSearchParams(window.location.search);
+        ehid = urlParams.get('ehid');
+    }
+
+    if(ehid){
+        $.ajax({
+            url: "index.php?exam-app-exam-getanalysis&ehid=" + ehid,
+            type: "GET",
+            dataType: "json",
+            success: function(res) {
+                if(res.status == 'success'){
+                    // 打字机效果（可选，提升高级感）
+                    $("#ai-result-area").html(res.data).hide().fadeIn(500);
+                } else {
+                    $("#ai-result-area").html("<span style='color:red;'>分析获取失败：" + res.msg + "</span>");
+                }
+            },
+            error: function() {
+                $("#ai-result-area").html("<span style='color:red;'>网络连接超时，请检查服务器网络。</span>");
+            }
+        });
+    }
+});
+</script>
 <div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
 	<div class="row-fluid">
 		<div class="main itembox">
 			<div class="col-xs-12">
 				<ul class="list-unstyled">
 					<li class="text-center"><a href="">在线考试 </a></li>
-					<li class="text-center"><a href="">Copyright © 2015-2017</a></li>
+					<li class="text-center"><a href="">Copyright © 2026</a></li>
 				</ul>
 			</div>
 		</div>

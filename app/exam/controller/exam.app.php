@@ -420,6 +420,137 @@ class action extends app
 			}
 		}
 	}
+	
+	
+	/**
+     * AI 安全大模型分析接口 (修复版：兼容低版本 PHP)
+     */
+    public function getanalysis()
+    {
+        // 1. 安全接收参数
+        $ehid = $this->ev->get('ehid');
+        if(!$ehid) exit(json_encode(array('status' => 'error', 'msg' => '参数错误')));
+
+        // 2. 获取考试记录
+        $eh = $this->favor->getExamHistoryById($ehid);
+        if(!$eh) exit(json_encode(array('status' => 'error', 'msg' => '未找到考试记录')));
+
+        // 3. 数据清洗与错题提取
+        $questions = unserialize($eh['ehquestion']);
+        $scoreList = unserialize($eh['ehscore']);
+        
+        $wrongData = array();
+        $i = 0;
+
+        if(is_array($questions['questions'])){
+            foreach($questions['questions'] as $typeid => $rows){
+                foreach($rows as $q){
+                    // 判定错题
+                    $userScore = isset($scoreList[$q['questionid']]) ? $scoreList[$q['questionid']] : 0;
+                    
+                    if($userScore == 0){
+                        // 清洗HTML标签
+                        $qContent = strip_tags(html_entity_decode($q['question']));
+                        // 截断过长题目
+                        $qContent = mb_substr($qContent, 0, 100, 'utf-8'); 
+                        $wrongData[] = ($i+1) . "、" . $qContent;
+                        $i++;
+                        if($i >= 8) break 2; 
+                    }
+                }
+            }
+        }
+
+        // 4. 如果全对的处理
+        if(empty($wrongData)){
+            $res = "恭喜！本次安全考核您全部通过，说明您对企业安全生产规范掌握非常牢固。安全无小事，请在日常工作中继续保持警惕！";
+            exit(json_encode(array('status' => 'success', 'data' => $res)));
+        }
+
+        // 5. 组装 Prompt
+        $wrongText = implode("\n", $wrongData);
+        $prompt = "你现在是企业安全生产培训的高级专家导师。考生刚刚完成了一次安全生产规范考试，以下是他的错题摘要：\n{$wrongText}\n\n请完成以下任务：\n1. 简要分析该考生在安全意识或操作规范上的具体薄弱点。\n2. 给出3条简短、严肃且具体的整改或学习建议。\n3. 语气要专业、严谨，直接给建议，字数控制在300字以内。";
+
+        // 6. 调用阿里云百炼 API
+        // ================= 配置区 START =================
+        // 请在此处填入阿里云 API KEY
+        $ALIYUN_API_KEY = "sk-2f996bffe9874aa88c93cefb0e572019"; 
+        // ================= 配置区 END ===================
+
+        $aiResult = $this->callBailianAi($ALIYUN_API_KEY, $prompt);
+        
+        // 格式化输出
+        $finalHtml = str_replace("\n", "<br/>", $aiResult);
+        exit(json_encode(array('status' => 'success', 'data' => $finalHtml)));
+    }
+
+    /**
+     * 阿里云百炼 API 调用封装 (修复版：兼容 curl 和老版本语法)
+     */
+    private function callBailianAi($apiKey, $content)
+    {
+        $url = 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions';
+        
+        // 请求头
+        $headers = array(
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json'
+        );
+
+        // 请求体
+        $data = array(
+            "model" => "qwen-plus", 
+            "messages" => array(
+                array(
+                    "role" => "system",
+                    "content" => "你是企业安全生产考核系统的智能助手。"
+                ),
+                array(
+                    "role" => "user",
+                    "content" => $content
+                )
+            ),
+            "temperature" => 0.7,
+            "stream" => false
+        );
+
+        // 发送 CURL 请求
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        
+        $result = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            $error_msg = curl_error($ch);
+            curl_close($ch);
+            return "AI 服务连接失败: " . $error_msg;
+        }
+        curl_close($ch);
+
+        // 解析结果
+        $response = json_decode($result, true);
+
+        // 错误处理 (这里修复了 ?? 语法错误)
+        if(isset($response['error'])) {
+            $errMsg = isset($response['error']['message']) ? $response['error']['message'] : '未知错误';
+            return "AI 调用报错: " . $errMsg;
+        }
+
+        // 提取回复内容
+        if(isset($response['choices'][0]['message']['content'])){
+            return $response['choices'][0]['message']['content'];
+        } else {
+            return "AI 响应解析失败，请检查 API Key 或余额。";
+        }
+    }
+	
+	
 
 	private function paper()
 	{
